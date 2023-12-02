@@ -1,5 +1,30 @@
 # pynaim
-Python module to control naim amps
+A WIP python module to control naim amps (targeted at Naim Uniti Atom)
+
+NOT FINISHED!!
+
+# Examples
+
+### Turn amp on:
+```python
+from naim import naim
+client = naim("ip address of amp")
+client.set_power(True)
+```
+
+### Turn amp off:
+```python
+from naim import naim
+client = naim("ip address of amp")
+client.set_power(False)
+```
+
+### Get amp current source:
+```python
+from naim import naim
+client = naim("ip address of amp")
+print(client.get_source())
+```
 
 # Functions
 ## naim.power_status
