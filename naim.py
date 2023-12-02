@@ -36,7 +36,6 @@ class naim:
     def status(self):
         return utils.naim_get(self, host=self.ip_address, port=self.port, path="system")
 
-
     def power_status(self):
         response = utils.naim_get(self, host=self.ip_address, port=self.port, path="power")
         try:
@@ -59,8 +58,9 @@ class naim:
 
     def set_power(self, state: bool):
         utils.naim_put(self, host=self.ip_address, port=self.port, path="power", key_value=["system", "lona" if not state else "on"])
-        check_new_status = self.power_status()
-        return state and check_new_status == "on" or (not state and check_new_status == "off")
+        mapping = {"on": True, "off": False}
+        return state == mapping[self.power_status()]
+
 
     def get_source(self):
         response = utils.naim_get(self, host=self.ip_address, port=self.port, path="nowplaying")
